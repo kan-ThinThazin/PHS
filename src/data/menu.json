@@ -1,0 +1,143 @@
+{
+  "shopName": "Pyi Htaung Hsu",
+  "shopNameMM": "ပြည်ထောင်စု",
+  "tagline": "Traditional Tea House · Est. 2018",
+  "categories": [
+    { "id": "tea", "label": "Tea & Coffee", "labelMM": "လက်ဖက်ရည်/ကော်ဖီ", "icon": "☕" },
+    { "id": "mohinga", "label": "Mohinga", "labelMM": "မုန့်ဟင်းခါး", "icon": "🍜" },
+    { "id": "palata", "label": "Palata", "labelMM": "ပလာတာ", "icon": "🫓" },
+    { "id": "shan", "label": "Shan", "labelMM": "ရှမ်း", "icon": "🍝" },
+    { "id": "fried_rice", "label": "Fried Rice", "labelMM": "ထမင်းကြော်", "icon": "🍚" },
+    { "id": "chinese", "label": "Chinese", "labelMM": "တရုတ်အစားအစာ", "icon": "🥢" },
+    { "id": "dishes", "label": "Dishes", "labelMM": "ဟင်းပွဲများ", "icon": "🍛" },
+    { "id": "other", "label": "Snacks", "labelMM": "အခြား", "icon": "🥟" }
+  ],
+  "featured": [
+    {
+      "id": "f1",
+      "name": "လက်ဖက်ရည်",
+      "nameEN": "Traditional Milk Tea",
+      "price": "၂၃၀၀",
+      "description": "Strong black tea brewed with condensed milk — silky, rich and timeless.",
+      "image": "/tea.jpg",
+      "category": "tea"
+    },
+    {
+      "id": "f2",
+      "name": "မုန့်ဟင်းခါး",
+      "nameEN": "Mohinga — Burma's Soul",
+      "price": "၂၀၀၀",
+      "description": "Myanmar's beloved breakfast noodle soup — fish broth, crispy fritters, fresh herbs.",
+      "image": "/MokeHimKhar.jpg",
+      "category": "mohinga"
+    },
+    {
+      "id": "f3",
+      "name": "ကီးမားပလာတာ (ကြက်)",
+      "nameEN": "Keema Palata — Chicken",
+      "price": "၅၀၀၀",
+      "description": "Flaky golden layered bread stuffed with spiced minced chicken. A street food legend.",
+      "image": "/Keema.jpg",
+      "category": "palata"
+    },
+    {
+      "id": "f4",
+      "name": "ရှမ်းခေါက်ဆွဲ",
+      "nameEN": "Shan Noodles",
+      "price": "၃၅၀၀",
+      "description": "Delicate Shan-style noodles in a light, aromatic broth with tofu and herbs.",
+      "image": "/Shan.jpg",
+      "category": "shan"
+    }
+  ],
+  "items": {
+    "tea": [
+      { "id": "t1", "name": "လက်ဖက်ရည်", "nameEN": "Burmese Milk Tea", "price": "၂၃၀၀" },
+      { "id": "t2", "name": "လက်ဖက်ရည် (ပါဆယ်)", "nameEN": "Milk Tea (Takeaway)", "price": "၄၅၀၀" },
+      { "id": "t3", "name": "စီလုံတီး", "nameEN": "Ceylon Tea", "price": "၅၃၀၀" },
+      { "id": "t4", "name": "စီလုံတီး (ပါဆယ်)", "nameEN": "Ceylon Tea (Takeaway)", "price": "၅၅၀၀" },
+      { "id": "t5", "name": "ကော်ဖီ", "nameEN": "Coffee", "price": "၂၃၀၀" },
+      { "id": "t6", "name": "နွားနို့", "nameEN": "Warm Milk", "price": "၃၅၀၀" },
+      { "id": "t7", "name": "နို့ကြက်ဥ", "nameEN": "Milk & Egg", "price": "၄၀၀၀" },
+      { "id": "t8", "name": "အိုဗာတင်း", "nameEN": "Ovaltine", "price": "၄၀၀၀" },
+      { "id": "t9", "name": "Nest Coffee", "nameEN": "Nest Coffee", "price": "၄၀၀၀" }
+    ],
+    "mohinga": [
+      { "id": "m1", "name": "မုန့်ဟင်းခါး", "nameEN": "Mohinga (Plain)", "price": "၂၀၀၀" },
+      { "id": "m2", "name": "မုန့်ဟင်းခါး (အိုးဘဲဥ)", "nameEN": "Mohinga + Duck Egg", "price": "၂၈၀၀" },
+      { "id": "m3", "name": "မုန့်ဟင်းခါး (ငါးဖယ်)", "nameEN": "Mohinga + Fish Cake", "price": "၂၈၀၀" },
+      { "id": "m4", "name": "မုန့်ဟင်းခါး (အကြော်)", "nameEN": "Mohinga + Fritter", "price": "၂၅၀၀" },
+      { "id": "m5", "name": "မုန့်ဟင်းခါး (အစုံ)", "nameEN": "Mohinga Full Set", "price": "၄၅၀၀" }
+    ],
+    "palata": [
+      { "id": "p1", "name": "ကီးမားပလာတာ (ကြက်)", "nameEN": "Keema Palata (Chicken)", "price": "၅၀၀၀" },
+      { "id": "p2", "name": "ကီးမားပလာတာ (၀က်)", "nameEN": "Keema Palata (Pork)", "price": "၅၅၀၀" },
+      { "id": "p3", "name": "လမ်းသရဲပလာတာ", "nameEN": "Street Ghost Palata", "price": "၄၅၀၀" },
+      { "id": "p4", "name": "ငှက်ပျော်ပလာတာ", "nameEN": "Banana Palata", "price": "၃၅၀၀" },
+      { "id": "p5", "name": "ကြက်ဥပလာတာ", "nameEN": "Egg Palata", "price": "၃၀၀၀" },
+      { "id": "p6", "name": "ပဲပလာတာ", "nameEN": "Bean Palata", "price": "၁၈၀၀" },
+      { "id": "p7", "name": "သကြားပလာတာ", "nameEN": "Sugar Palata", "price": "၁၃၀၀" },
+      { "id": "p8", "name": "ပဲလိပ်ခုပ်", "nameEN": "Bean Roll", "price": "၁၈၀၀" },
+      { "id": "p9", "name": "ပဲတင်ကြော်", "nameEN": "Fried Beans", "price": "၃၀၀၀" }
+    ],
+    "shan": [
+      { "id": "s1", "name": "ရှမ်းခေါက်ဆွဲ", "nameEN": "Shan Noodles", "price": "၃၅၀၀" },
+      { "id": "s2", "name": "မြီးရှည်", "nameEN": "Long Tail Noodles", "price": "၃၅၀၀" },
+      { "id": "s3", "name": "နန်းကြီး/နန်းပြား", "nameEN": "Royal Noodles", "price": "၃၅၀၀" },
+      { "id": "s4", "name": "ကွေ့တီယို", "nameEN": "Kway Teow", "price": "၄၅၀၀" },
+      { "id": "s5", "name": "ခေါက်ဆွဲသုပ်", "nameEN": "Noodle Salad", "price": "၃၅၀၀" },
+      { "id": "s6", "name": "ရွှေတောင်ခေါက်ဆွဲ", "nameEN": "Golden Mountain Noodles", "price": "၃၅၀၀" }
+    ],
+    "fried_rice": [
+      { "id": "fr1", "name": "ထမင်းကြော် (ဘဲဥ)", "nameEN": "Fried Rice (Duck Egg)", "price": "၂၈၀၀" },
+      { "id": "fr2", "name": "ထမင်းကြော် (ကြက်/၀က်)", "nameEN": "Fried Rice (Chicken/Pork)", "price": "၆၀၀၀" },
+      { "id": "fr3", "name": "ထမင်း‌ကြော်ကြက်ဥ", "nameEN": "Egg Fried Rice", "price": "၂၅၀၀" },
+      { "id": "fr4", "name": "ထမင်းဆီဆမ်း", "nameEN": "Oil Tossed Rice", "price": "၂၅၀၀" },
+      { "id": "fr5", "name": "လက်ဖက်ထမင်း", "nameEN": "Tea Leaf Rice", "price": "၃၀၀၀" },
+      { "id": "fr6", "name": "ပြည်ထမင်းသုပ်", "nameEN": "Pyin Rice Salad", "price": "၃၀၀၀" },
+      { "id": "fr7", "name": "ပုန်းရည်ထမင်းသုပ်", "nameEN": "Honey Rice Salad", "price": "၃၀၀၀" }
+    ],
+    "chinese": [
+      { "id": "c1", "name": "ထမင်းပေါင်း", "nameEN": "Steamed Rice", "price": "၇၀၀၀" },
+      { "id": "c2", "name": "ငပိထမင်းကြော်", "nameEN": "Shrimp Paste Fried Rice", "price": "၆၅၀၀" },
+      { "id": "c3", "name": "တုံယမ်းထမင်းကြော်", "nameEN": "Tomyum Fried Rice", "price": "၆၅၀၀" },
+      { "id": "c4", "name": "တရုတ်ထမင်းကြော်", "nameEN": "Chinese Fried Rice", "price": "၆၅၀၀" },
+      { "id": "c5", "name": "ပသျှူးထမင်းကြော်", "nameEN": "Bashu Fried Rice", "price": "၆၅၀၀" },
+      { "id": "c6", "name": "မလေးထမင်းကြော်", "nameEN": "Malay Fried Rice", "price": "၆၅၀၀" },
+      { "id": "c7", "name": "ယိုးဒယားထမင်းကြော်", "nameEN": "Thai Fried Rice", "price": "၆၅၀၀" },
+      { "id": "c8", "name": "ခေါက်ဆွဲကြော်", "nameEN": "Fried Noodles", "price": "၆၅၀၀" },
+      { "id": "c9", "name": "U.S.A ထမင်းကြော်", "nameEN": "USA Fried Rice", "price": "၈၀၀၀" },
+      { "id": "c10", "name": "သုံးထပ်ကြွပ်ထမင်းကြော်", "nameEN": "Triple Crispy Fried Rice", "price": "၈၀၀၀" },
+      { "id": "c11", "name": "ကုန်းဘောင်ထမင်း", "nameEN": "Konbaung Style Rice", "price": "၇၅၀၀" },
+      { "id": "c12", "name": "ချိချဉ်ထမင်း", "nameEN": "Sweet & Sour Rice", "price": "၇၅၀၀" },
+      { "id": "c13", "name": "ကြက်ပေါင်းထမင်း", "nameEN": "Braised Chicken Rice", "price": "၈၅၀၀" },
+      { "id": "c14", "name": "ပုဇွန်ဆီပြန်ထမင်း", "nameEN": "Prawn Butter Rice", "price": "၉၀၀၀" },
+      { "id": "c15", "name": "အသားစုံလယ်သမားထမင်း", "nameEN": "Farmer's Mixed Meat Rice", "price": "၉၅၀၀" }
+    ],
+    "dishes": [
+      { "id": "d1", "name": "ကုန်းဘောင်ကြီးကြော်", "nameEN": "Konbaung Stir Fry", "price": "၁၀၀၀၀", "priceAlt": "sF ၁၁၀၀၀" },
+      { "id": "d2", "name": "ချိုချဉ်", "nameEN": "Sweet & Sour", "price": "၁၀၀၀၀", "priceAlt": "sF ၁၁၀၀၀" },
+      { "id": "d3", "name": "တောက်တောက်ကြော်", "nameEN": "Crispy Stir Fry", "price": "၁၀၀၀၀" },
+      { "id": "d4", "name": "ကြက်ကြွပ်ကြော်", "nameEN": "Crispy Chicken", "price": "၁၀၀၀၀" },
+      { "id": "d5", "name": "ပုဇွန်မဆလာဟင်း", "nameEN": "Prawn Masala Curry", "price": "၁၀၀၀၀" },
+      { "id": "d6", "name": "မာလာရှမ်းကော", "nameEN": "Mala Shan Pot (Chicken)", "price": "ကြက် ၁၅၅၀၀", "priceAlt": "၀က် ၁၆၅၀၀", "priceAlt2": "sF ၁၈၅၀၀" },
+      { "id": "d7", "name": "ကြေးအိုး", "nameEN": "Brass Pot", "price": "ကြက် ၇၅၀၀", "priceAlt": "၀က် ၈၀၀၀", "priceAlt2": "sF ၈၅၀၀" },
+      { "id": "d8", "name": "ဖက်ထုပ်ကြေးအိုး", "nameEN": "Leaf-Wrapped Brass Pot", "price": "ကြက် ၇၅၀၀", "priceAlt": "၀က် ၈၀၀၀", "priceAlt2": "sF ၈၅၀၀" },
+      { "id": "d9", "name": "ကြာဇံပြုတ်", "nameEN": "Boiled Lotus Seeds", "price": "၆၅၀၀", "priceAlt": "sF ၇၅၀၀" },
+      { "id": "d10", "name": "ပင်လယ်စာသုပ်", "nameEN": "Seafood Salad", "price": "၁၁၀၀၀" },
+      { "id": "d11", "name": "ကြက်သားသုပ်", "nameEN": "Chicken Salad", "price": "၇၅၀၀" },
+      { "id": "d12", "name": "လယ်သမားဟင်းချို", "nameEN": "Farmer's Soup", "price": "၁၂၀၀၀" }
+    ],
+    "other": [
+      { "id": "o1", "name": "ပေါင်မုန့်ကြက်ဥကြော်", "nameEN": "Bread & Fried Egg", "price": "၁၈၀၀" },
+      { "id": "o2", "name": "ပေါက်စီကြော်", "nameEN": "Fried Pauksi", "price": "၃၀၀၀" },
+      { "id": "o3", "name": "ပေါက်စီ", "nameEN": "Pauksi", "price": "၂၀၀၀" },
+      { "id": "o4", "name": "နံပြား", "nameEN": "Naan Bread", "price": "၁၀၀၀" },
+      { "id": "o5", "name": "နံပြားထောပတ်သုတ်", "nameEN": "Naan with Butter", "price": "၁၈၀၀" },
+      { "id": "o6", "name": "ပဲနံပြား", "nameEN": "Bean Naan", "price": "၁၈၀၀" },
+      { "id": "o7", "name": "မလိုင်နံပြား", "nameEN": "Malai Naan", "price": "၆၀၀၀" },
+      { "id": "o8", "name": "ရှယ်နံပြား", "nameEN": "Special Naan", "price": "၃၀၀၀" },
+      { "id": "o9", "name": "နံပြားအုပ်သုပ်", "nameEN": "Naan Salad", "price": "၃၆၀၀" }
+    ]
+  }
+}
