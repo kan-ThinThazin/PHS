@@ -1,15 +1,28 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import menuData from '../../data/menu.json';
 import { Search, MessageSquare, Heart } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import SearchBar from './SearchBar';
+import ShopLogo from './ShopLogo';
 
-// FIXED: Removed the import line for the image since it's in public/
-
-export default function Header({ favoritesCount, onSearchChange, onFeedbackOpen }) {
+export default function Header({ favoritesCount, favorites = [], onSearchChange, onFeedbackOpen }) {
   const [searchOpen, setSearchOpen] = useState(false);
+  const [favOpen, setFavOpen] = useState(false);
+  const [isSticky, setIsSticky] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setIsSticky(window.scrollY > 10);
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
+  const allItems = Object.values(menuData.items).flat();
+  const favItems = allItems.filter((item) => favorites.includes(item.id));
 
   return (
-    <header className="sticky top-0 z-50 bg-parchment/90 backdrop-blur-xl border-b border-ink/6">
+    <header className={`sticky top-0 z-50 transition-all duration-300 ${
+        isSticky ? 'bg-white/97 backdrop-blur-xl shadow-[0_10px_30px_rgba(0,0,0,0.06)]' : 'bg-parchment/90 backdrop-blur-xl border-b border-ink/6'
+      }`}>
       <div className="max-w-2xl mx-auto px-5 py-3 flex items-center gap-3">
         {/* Logo */}
         <motion.div
@@ -17,12 +30,7 @@ export default function Header({ favoritesCount, onSearchChange, onFeedbackOpen 
           transition={{ duration: 0.4 }}
           className="flex-shrink-0"
         >
-          {/* FIXED: Changed from <ShopLogo /> component to a standard <img> tag */}
-          <img 
-            src="/PHSlogo.png" 
-            alt="Pyi Htaung Hsu Logo" 
-            className="w-10 h-10 object-contain" 
-          />
+          <ShopLogo size="md" />
         </motion.div>
 
         {/* Shop Name */}
@@ -59,23 +67,70 @@ export default function Header({ favoritesCount, onSearchChange, onFeedbackOpen 
             aria-label="Give feedback"
           >
             <MessageSquare size={18} className="text-ink/60" />
-            <span className="absolute top-2 right-2 w-1.5 h-1.5 bg-honey rounded-full" />
+            <span className="absolute top-2 right-2 w-1.5 h-1.5 bg-[#FECB00] rounded-full" />
           </button>
 
-          <div className="relative p-2.5 min-w-[44px] min-h-[44px] flex items-center justify-center">
-            <Heart size={18} className="text-ink/60" />
+          <button
+            onClick={() => setFavOpen(!favOpen)}
+            className="relative p-2.5 rounded-full hover:bg-[#FECB00]/10 transition-colors min-w-[44px] min-h-[44px] flex items-center justify-center"
+            aria-label="View favorites"
+          >
+            <Heart size={18} className={favOpen ? 'text-[#FECB00] fill-[#FECB00]' : 'text-ink/60'} />
             {favoritesCount > 0 && (
               <motion.span
                 initial={{ scale: 0 }}
                 animate={{ scale: 1 }}
-                className="absolute top-1.5 right-1.5 min-w-[16px] min-h-[16px] bg-honey text-steam text-[9px] font-mono font-bold rounded-full flex items-center justify-center px-1"
+                className="absolute top-1.5 right-1.5 min-w-[16px] min-h-[16px] bg-[#FECB00] text-ink text-[9px] font-mono font-bold rounded-full flex items-center justify-center px-1"
               >
                 {favoritesCount}
               </motion.span>
             )}
-          </div>
+          </button>
         </div>
       </div>
+
+      {/* Under-gradient: Red, Yellow, Green animated strip */}
+      {/* <div className="absolute bottom-0 left-0 right-0 h-[3px] overflow-hidden bg-transparent">
+        <motion.div
+          initial={{ scaleX: 0 }}
+          animate={{ scaleX: isSticky ? 1 : 0 }}
+          transition={{ duration: 0.4, ease: 'easeInOut' }}
+          className="w-full h-full bg-gradient-to-r from-[#CE1126] via-[#FECB00] to-[#34A853] origin-left"
+        />
+      </div> */}
+
+      <AnimatePresence>
+        {favOpen && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: 'auto', opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.25 }}
+            className="overflow-hidden border-t border-[#FECB00]/15 bg-[#FFF8F0]"
+          >
+            <div className="px-5 py-3 max-w-2xl mx-auto">
+              {favItems.length > 0 ? (
+                <>
+                  <p className="text-[10px] font-mono text-[#FECB00]/80 uppercase tracking-widest mb-2.5">✦ Favourites ({favItems.length})</p>
+                  <div className="space-y-2">
+                    {favItems.map((item) => (
+                      <div key={item.id} className="flex justify-between items-center py-1">
+                        <div>
+                          <p className="font-serif text-sm font-semibold text-ink leading-tight">{item.name}</p>
+                          {item.nameEN && <p className="text-[10px] font-mono text-ink/35">{item.nameEN}</p>}
+                        </div>
+                        <span className="font-mono text-[#FECB00] text-xs font-bold">{item.price} MMK</span>
+                      </div>
+                    ))}
+                  </div>
+                </>
+              ) : (
+                <p className="text-center py-2 text-sm text-ink/30 font-mono">No favourites yet</p>
+              )}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       <AnimatePresence>
         {searchOpen && (

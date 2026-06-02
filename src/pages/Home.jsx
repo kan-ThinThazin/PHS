@@ -39,6 +39,7 @@ export default function Home() {
     <div className="min-h-screen bg-parchment text-ink vintage-filter paper-texture selection:bg-honey/30">
       <Header
         favoritesCount={favorites.length}
+        favorites={favorites}
         onSearchChange={handleSearch}
         onFeedbackOpen={() => setFeedbackOpen(true)}
       />
