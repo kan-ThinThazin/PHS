@@ -3,7 +3,6 @@ import menuData from '../../data/menu.json';
 import { Search, MessageSquare, Heart } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import SearchBar from './SearchBar';
-import ShopLogo from './ShopLogo';
 
 export default function Header({ favoritesCount, favorites = [], onSearchChange, onFeedbackOpen }) {
   const [searchOpen, setSearchOpen] = useState(false);
@@ -24,23 +23,45 @@ export default function Header({ favoritesCount, favorites = [], onSearchChange,
         isSticky ? 'bg-white/97 backdrop-blur-xl shadow-[0_10px_30px_rgba(0,0,0,0.06)]' : 'bg-parchment/90 backdrop-blur-xl border-b border-ink/6'
       }`}>
       <div className="max-w-2xl mx-auto px-5 py-3 flex items-center gap-3">
-        {/* Logo */}
+
+        {/* Logo with Framer Motion Hover Effect */}
         <motion.div
           whileHover={{ rotate: [0, -5, 5, 0] }}
           transition={{ duration: 0.4 }}
-          className="flex-shrink-0"
+          className="flex-shrink-0 cursor-pointer"
         >
-          <ShopLogo size="md" />
+          <img 
+            src="/PHS.png" 
+            alt="Pyi Htaung Hsu Shop Logo" 
+            className="h-12 w-auto object-contain" 
+          />
         </motion.div>
 
-        {/* Shop Name */}
+        {/* Shop Name Container */}
         <div className="flex-1 min-w-0">
           <div className="flex items-center gap-1.5">
-            <h1 className="font-serif text-lg sm:text-xl font-bold tracking-tight text-ink leading-tight">
+            
+            {/* Animated Gradient Text */}
+            <motion.h1 
+              animate={{ 
+                backgroundPosition: ["0% 50%", "200% 50%"] 
+              }}
+              transition={{ 
+                duration: 4, 
+                ease: "linear", 
+                repeat: Infinity 
+              }}
+              style={{
+                backgroundImage: 'linear-gradient(to right, #CE1126, #FECB00, #34A853, #CE1126)',
+                backgroundSize: '200% auto',
+              }}
+              className="font-serif text-lg sm:text-xl font-bold tracking-tight bg-clip-text text-transparent leading-tight selection:text-ink"
+            >
               Pyi Htaung Hsu
-            </h1>
+            </motion.h1>
+            
             {/* Myanmar flag mini-stripe */}
-            <div className="flex flex-col gap-px ml-1">
+            <div className="flex flex-col gap-px ml-1 flex-shrink-0">
               <div className="w-5 h-0.5 rounded-full bg-[#CE1126]" />
               <div className="w-5 h-0.5 rounded-full bg-[#FECB00]" />
               <div className="w-5 h-0.5 rounded-full bg-[#34A853]" />
@@ -88,16 +109,6 @@ export default function Header({ favoritesCount, favorites = [], onSearchChange,
           </button>
         </div>
       </div>
-
-      {/* Under-gradient: Red, Yellow, Green animated strip */}
-      {/* <div className="absolute bottom-0 left-0 right-0 h-[3px] overflow-hidden bg-transparent">
-        <motion.div
-          initial={{ scaleX: 0 }}
-          animate={{ scaleX: isSticky ? 1 : 0 }}
-          transition={{ duration: 0.4, ease: 'easeInOut' }}
-          className="w-full h-full bg-gradient-to-r from-[#CE1126] via-[#FECB00] to-[#34A853] origin-left"
-        />
-      </div> */}
 
       <AnimatePresence>
         {favOpen && (

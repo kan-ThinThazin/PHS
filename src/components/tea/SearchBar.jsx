@@ -5,12 +5,18 @@ export default function SearchBar({ onSearch, onClose }) {
   const [query, setQuery] = useState('');
   const inputRef = useRef(null);
 
+  // Focus the input on open
   useEffect(() => {
     inputRef.current?.focus();
   }, []);
 
+  // Debounce the search handler to support complex text input systems (like Burmese IME)
   useEffect(() => {
-    onSearch(query);
+    const delayDebounceFn = setTimeout(() => {
+      onSearch(query);
+    }, 250); // 250ms delay lets you finish typing a character combo safely
+
+    return () => clearTimeout(delayDebounceFn);
   }, [query, onSearch]);
 
   return (
@@ -21,12 +27,12 @@ export default function SearchBar({ onSearch, onClose }) {
         type="text"
         value={query}
         onChange={(e) => setQuery(e.target.value)}
-        placeholder="Search tea, coffee, snacks..."
+        placeholder="ရှာဖွေရန်... (မုန့်၊ လက်ဖက်ရည်...)"
         className="w-full bg-ink/5 rounded-lg pl-10 pr-10 py-2.5 text-sm font-sans text-ink placeholder:text-ink/30 focus:outline-none focus:ring-1 focus:ring-honey/30 transition-all"
       />
       {query && (
         <button
-          onClick={() => { setQuery(''); onClose(); }}
+          onClick={() => { setQuery(''); onSearch(''); onClose(); }}
           className="absolute right-3 p-0.5"
           aria-label="Clear search"
         >
