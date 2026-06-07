@@ -5,37 +5,31 @@ import menuData from '../../data/menu.json';
 export default function CategoryNav({ activeCategory, onCategoryChange }) {
   const scrollRef = useRef(null);
   const [isSticky, setIsSticky] = useState(false);
-  const [headerH, setHeaderH] = useState(65);
 
+  // Monitor scroll positioning to switch pill styles safely
   useEffect(() => {
-    const measure = () => {
-      const h = document.querySelector('header');
-      if (h) setHeaderH(h.offsetHeight);
+    const onScroll = () => {
+      // Fires sticky styles slightly earlier to match mobile inertia scrolling
+      setIsSticky(window.scrollY > 40);
     };
-    measure();
-    window.addEventListener('resize', measure);
-    return () => window.removeEventListener('resize', measure);
-  }, []);
-
-  useEffect(() => {
-    const onScroll = () => setIsSticky(window.scrollY > 100);
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
+  // Smoothly center the active category item horizontally in the mobile scroller
   useEffect(() => {
     const el = scrollRef.current?.querySelector(`[data-cat="${activeCategory}"]`);
     if (el && scrollRef.current) {
       const c = scrollRef.current;
-      c.scrollTo({ left: el.offsetLeft - c.offsetWidth / 2 + el.offsetWidth / 2, behavior: 'smooth' });
+      c.scrollTo({ 
+        left: el.offsetLeft - c.offsetWidth / 2 + el.offsetWidth / 2, 
+        behavior: 'smooth' 
+      });
     }
   }, [activeCategory]);
 
-  // Handle category change AND scroll to the absolute top of the page
   const handleCategoryClick = (catId) => {
     onCategoryChange(catId);
-
-    // This scrolls the whole window back to the very top of the website
     window.scrollTo({
       top: 0,
       behavior: 'smooth'
@@ -44,10 +38,9 @@ export default function CategoryNav({ activeCategory, onCategoryChange }) {
 
   return (
     <div
-      style={{ top: headerH }}
-      className={`sticky z-40 transition-all duration-300 ${
+      className={`sticky top-[71px] z-40 transition-all duration-300 ${
         isSticky
-          ? 'bg-white/97 backdrop-blur-xl shadow-[0_10px_30px_rgba(0,0,0,0.08)]'
+          ? 'bg-white/97 backdrop-blur-xl shadow-[0_10px_30px_rgba(0,0,0,0.08)] border-b border-ink/5'
           : 'bg-parchment/90 backdrop-blur-sm border-b border-ink/5'
       }`}
     >
@@ -60,7 +53,9 @@ export default function CategoryNav({ activeCategory, onCategoryChange }) {
           data-cat="all"
           onClick={() => handleCategoryClick('all')}
           className={`relative whitespace-nowrap px-3.5 py-1.5 rounded-full text-[13px] font-sans font-medium transition-all min-h-[36px] ${
-            activeCategory === 'all' ? 'text-white' : isSticky ? 'text-ink/50 hover:text-ink/80' : 'text-ink/40 hover:text-ink/70'
+            activeCategory === 'all' 
+              ? 'text-white' 
+              : isSticky ? 'text-ink/50 hover:text-ink/80' : 'text-ink/40 hover:text-ink/70'
           }`}
         >
           {activeCategory === 'all' && (
@@ -79,15 +74,7 @@ export default function CategoryNav({ activeCategory, onCategoryChange }) {
               className="absolute bottom-[-10px] left-2 right-2 h-[3px] overflow-hidden bg-transparent"
               transition={{ type: 'spring', stiffness: 380, damping: 30 }}
             >
-              {/* <motion.div
-                animate={{ x: ['-100%', '200%'] }}
-                transition={{
-                  repeat: Infinity,
-                  ease: 'linear',
-                  duration: 1.5,
-                }}
-                className="w-1/3 h-full bg-gradient-to-r from-[#CE1126] via-[#FCD116] to-[#34A853] rounded-full"
-              /> */}
+              {/* Optional animated track can be uncommented here */}
             </motion.div>
           )}
         </button>
@@ -99,7 +86,9 @@ export default function CategoryNav({ activeCategory, onCategoryChange }) {
             data-cat={cat.id}
             onClick={() => handleCategoryClick(cat.id)}
             className={`relative whitespace-nowrap px-3.5 py-1.5 rounded-full text-[13px] font-sans font-medium transition-all min-h-[36px] ${
-              activeCategory === cat.id ? 'text-white' : isSticky ? 'text-ink/50 hover:text-ink/80' : 'text-ink/40 hover:text-ink/70'
+              activeCategory === cat.id 
+                ? 'text-white' 
+                : isSticky ? 'text-ink/50 hover:text-ink/80' : 'text-ink/40 hover:text-ink/70'
             }`}
           >
             {activeCategory === cat.id && (
@@ -121,15 +110,7 @@ export default function CategoryNav({ activeCategory, onCategoryChange }) {
                 className="absolute bottom-[-10px] left-2 right-2 h-[3px] overflow-hidden bg-transparent"
                 transition={{ type: 'spring', stiffness: 380, damping: 30 }}
               >
-                {/* <motion.div
-                  animate={{ x: ['-100%', '200%'] }}
-                  transition={{
-                    repeat: Infinity,
-                    ease: 'linear',
-                    duration: 1.5,
-                  }}
-                  className="w-1/3 h-full bg-gradient-to-r from-[#CE1126] via-[#FCD116] to-[#34A853] rounded-full"
-                /> */}
+                {/* Optional animated track can be uncommented here */}
               </motion.div>
             )}
           </button>
