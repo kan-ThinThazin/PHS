@@ -38,7 +38,6 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-parchment text-ink vintage-filter paper-texture selection:bg-honey/30">
       
-      
       <Header
         favoritesCount={favorites.length}
         favorites={favorites}
@@ -48,13 +47,14 @@ export default function Home() {
 
       <HeroSection />
 
-      
-      <div className="bg-white border-b border-ink/5 sticky top-[72px] z-40 transition-colors">
-        <CategoryNav
-          activeCategory={activeCategory}
-          onCategoryChange={setActiveCategory}
-        />
-      </div>
+      {/* ✅ FIXED: Removed the fighting sticky parent div container.
+        CategoryNav now directly follows Header and anchors cleanly on mobile 
+        using the structural CSS variable layout pipeline we created.
+      */}
+      <CategoryNav
+        activeCategory={activeCategory}
+        onCategoryChange={setActiveCategory}
+      />
 
       <main>
         <MenuSection

@@ -6,17 +6,14 @@ export default function CategoryNav({ activeCategory, onCategoryChange }) {
   const scrollRef = useRef(null);
   const [isSticky, setIsSticky] = useState(false);
 
-  // Monitor scroll positioning to switch pill styles safely
   useEffect(() => {
     const onScroll = () => {
-      // Fires sticky styles slightly earlier to match mobile inertia scrolling
-      setIsSticky(window.scrollY > 40);
+      setIsSticky(window.scrollY > 20);
     };
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  // Smoothly center the active category item horizontally in the mobile scroller
   useEffect(() => {
     const el = scrollRef.current?.querySelector(`[data-cat="${activeCategory}"]`);
     if (el && scrollRef.current) {
@@ -38,15 +35,24 @@ export default function CategoryNav({ activeCategory, onCategoryChange }) {
 
   return (
     <div
-      className={`sticky top-[71px] z-40 transition-all duration-300 ${
+      className={`sticky z-40 w-full transition-all duration-300 ${
         isSticky
           ? 'bg-white/97 backdrop-blur-xl shadow-[0_10px_30px_rgba(0,0,0,0.08)] border-b border-ink/5'
           : 'bg-parchment/90 backdrop-blur-sm border-b border-ink/5'
       }`}
+      style={{
+        position: '-webkit-sticky',
+        position: 'sticky',
+        // Reads the exact runtime height of your header file to avoid alignment gaps
+        top: 'var(--header-height, 73px)',
+      }}
     >
-      <div
+      {/* layoutRoot isolates Framer Motion positioning tracking on mobile viewport updates */}
+      <motion.div
+        layoutRoot
         ref={scrollRef}
-        className="flex gap-1 px-5 py-2.5 max-w-2xl mx-auto overflow-x-auto no-scrollbar relative"
+        className="flex gap-1 px-5 py-2.5 max-w-2xl mx-auto overflow-x-auto no-scrollbar subpixel-antialiased touch-pan-x relative"
+        style={{ WebkitOverflowScrolling: 'touch' }}
       >
         {/* "All" Button */}
         <button
@@ -66,17 +72,6 @@ export default function CategoryNav({ activeCategory, onCategoryChange }) {
             />
           )}
           <span className="relative z-10">All</span>
-
-          {/* Infinite Moving Short Line Underneath Active Item */}
-          {activeCategory === 'all' && isSticky && (
-            <motion.div
-              layoutId="stickyActiveUnderlineTrack"
-              className="absolute bottom-[-10px] left-2 right-2 h-[3px] overflow-hidden bg-transparent"
-              transition={{ type: 'spring', stiffness: 380, damping: 30 }}
-            >
-              {/* Optional animated track can be uncommented here */}
-            </motion.div>
-          )}
         </button>
 
         {/* Dynamic Category Buttons */}
@@ -102,20 +97,9 @@ export default function CategoryNav({ activeCategory, onCategoryChange }) {
               <span>{cat.icon}</span>
               <span>{cat.labelMM}</span>
             </span>
-
-            {/* Infinite Moving Short Line Underneath Active Item */}
-            {activeCategory === cat.id && isSticky && (
-              <motion.div
-                layoutId="stickyActiveUnderlineTrack"
-                className="absolute bottom-[-10px] left-2 right-2 h-[3px] overflow-hidden bg-transparent"
-                transition={{ type: 'spring', stiffness: 380, damping: 30 }}
-              >
-                {/* Optional animated track can be uncommented here */}
-              </motion.div>
-            )}
           </button>
         ))}
-      </div>
+      </motion.div>
     </div>
   );
 }
